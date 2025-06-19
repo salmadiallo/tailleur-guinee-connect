@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Package, MessageCircle, Star, DollarSign, TrendingUp, Camera, Eye } from "lucide-react";
 import Header from "@/components/Header";
+import PublishModal from "@/components/PublishModal";
 
 const TailorDashboard = () => {
   const recentOrders = [
@@ -57,17 +58,19 @@ const TailorDashboard = () => {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-3xl font-bold text-gray-900">Bienvenue, Mamadou !</h1>
-              <p className="text-gray-600 mt-2">Gérez votre atelier et vos commandes</p>
+              <p className="text-gray-600 mt-2">Gérez votre atelier et vos créations</p>
             </div>
             <div className="flex space-x-3">
               <Button variant="outline">
                 <Camera className="w-4 h-4 mr-2" />
                 Ajouter photo
               </Button>
-              <Button className="gradient-gold text-white">
-                <Plus className="w-4 h-4 mr-2" />
-                Nouveau modèle
-              </Button>
+              <PublishModal>
+                <Button className="gradient-gold text-white">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Publier création
+                </Button>
+              </PublishModal>
             </div>
           </div>
         </div>
@@ -111,8 +114,8 @@ const TailorDashboard = () => {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-600">Vues profil</p>
-                  <p className="text-2xl font-bold text-primary">127</p>
+                  <p className="text-sm text-gray-600">Publications</p>
+                  <p className="text-2xl font-bold text-primary">23</p>
                 </div>
                 <TrendingUp className="w-8 h-8 text-blue-500" />
               </div>
@@ -192,10 +195,12 @@ const TailorDashboard = () => {
                     <CardTitle>Mon Portfolio</CardTitle>
                     <CardDescription>Présentez vos plus belles créations</CardDescription>
                   </div>
-                  <Button className="gradient-gold text-white">
-                    <Plus className="w-4 h-4 mr-2" />
-                    Ajouter création
-                  </Button>
+                  <PublishModal>
+                    <Button className="gradient-gold text-white">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Ajouter création
+                    </Button>
+                  </PublishModal>
                 </div>
               </CardHeader>
               <CardContent>
