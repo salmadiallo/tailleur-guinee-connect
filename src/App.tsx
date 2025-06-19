@@ -12,6 +12,9 @@ import TailorDashboard from "./pages/TailorDashboard";
 import SearchTailors from "./pages/SearchTailors";
 import ChatPage from "./pages/ChatPage";
 import OrderPage from "./pages/OrderPage";
+import TailorProfile from "./pages/TailorProfile";
+import PublicationsPage from "./pages/PublicationsPage";
+import OrderDetails from "./pages/OrderDetails";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,8 +32,11 @@ const App = () => (
           <Route path="/client-dashboard" element={<ClientDashboard />} />
           <Route path="/tailor-dashboard" element={<TailorDashboard />} />
           <Route path="/search-tailors" element={<SearchTailors />} />
+          <Route path="/tailor/:id" element={<TailorProfile />} />
+          <Route path="/publications" element={<PublicationsPage />} />
           <Route path="/chat" element={<ChatPage />} />
           <Route path="/order" element={<OrderPage />} />
+          <Route path="/order/:id" element={<OrderDetails />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
