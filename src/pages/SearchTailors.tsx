@@ -109,8 +109,8 @@ const SearchTailors = () => {
   const filteredTailors = tailors.filter(tailor => {
     const matchesSearch = tailor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          tailor.specialties.some(specialty => specialty.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCity = !selectedCity || tailor.location.includes(selectedCity);
-    const matchesSpecialty = !selectedSpecialty || tailor.specialties.includes(selectedSpecialty);
+    const matchesCity = !selectedCity || selectedCity === 'all' || tailor.location.includes(selectedCity);
+    const matchesSpecialty = !selectedSpecialty || selectedSpecialty === 'all' || tailor.specialties.includes(selectedSpecialty);
     
     return matchesSearch && matchesCity && matchesSpecialty;
   });
@@ -142,7 +142,7 @@ const SearchTailors = () => {
                   <SelectValue placeholder="Ville" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                  <SelectItem value="">Toutes les villes</SelectItem>
+                  <SelectItem value="all">Toutes les villes</SelectItem>
                   <SelectItem value="Conakry">Conakry</SelectItem>
                   <SelectItem value="Kankan">Kankan</SelectItem>
                   <SelectItem value="Labé">Labé</SelectItem>
@@ -155,7 +155,7 @@ const SearchTailors = () => {
                   <SelectValue placeholder="Spécialité" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
-                  <SelectItem value="">Toutes spécialités</SelectItem>
+                  <SelectItem value="all">Toutes spécialités</SelectItem>
                   <SelectItem value="Boubou">Boubou</SelectItem>
                   <SelectItem value="Costume">Costume</SelectItem>
                   <SelectItem value="Robe">Robe</SelectItem>
