@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Search, MapPin } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -54,9 +55,11 @@ const Hero = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button className="gradient-gold text-white hover:opacity-90 h-11">
-                  Rechercher
-                </Button>
+                <Link to="/search-tailors">
+                  <Button className="gradient-gold text-white hover:opacity-90 h-11 w-full">
+                    Rechercher
+                  </Button>
+                </Link>
               </div>
             </div>
 
