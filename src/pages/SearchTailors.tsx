@@ -7,6 +7,10 @@ import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, MapPin, Star, Filter, Clock, MessageCircle } from "lucide-react";
 import Header from "@/components/Header";
+import { Link } from "react-router-dom";
+import tailorWorkshop1 from "@/assets/tailor-workshop-1.jpg";
+import tailorWorkshop2 from "@/assets/tailor-workshop-2.jpg";
+import tailorWorkshop3 from "@/assets/tailor-workshop-3.jpg";
 
 const SearchTailors = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -22,7 +26,7 @@ const SearchTailors = () => {
       reviews: 156,
       specialties: ["Boubou", "Costume", "Robe"],
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-      coverImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
+      coverImage: tailorWorkshop1,
       badges: ["Ponctuel", "Créatif"],
       price: "À partir de 50,000 GNF",
       delivery: "2-3 jours",
@@ -37,7 +41,7 @@ const SearchTailors = () => {
       reviews: 98,
       specialties: ["Robe", "Ensemble", "Broderie"],
       avatar: "https://images.unsplash.com/photo-1494790108755-2616c667d649?w=100&h=100&fit=crop&crop=face",
-      coverImage: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=300&fit=crop",
+      coverImage: tailorWorkshop2,
       badges: ["Rapide", "Qualité"],
       price: "À partir de 40,000 GNF",
       delivery: "1-2 jours",
@@ -52,7 +56,7 @@ const SearchTailors = () => {
       reviews: 201,
       specialties: ["Costume", "Chemise", "Pantalon"],
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-      coverImage: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=300&fit=crop",
+      coverImage: tailorWorkshop3,
       badges: ["Expérimenté", "Ponctuel"],
       price: "À partir de 60,000 GNF",
       delivery: "3-4 jours",
@@ -246,13 +250,17 @@ const SearchTailors = () => {
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-primary">{tailor.price}</span>
                     <div className="flex space-x-2">
-                      <Button size="sm" variant="outline">
-                        <MessageCircle className="w-4 h-4 mr-1" />
-                        Chat
-                      </Button>
-                      <Button size="sm" className="gradient-gold text-white">
-                        Voir profil
-                      </Button>
+                      <Link to="/chat">
+                        <Button size="sm" variant="outline">
+                          <MessageCircle className="w-4 h-4 mr-1" />
+                          Chat
+                        </Button>
+                      </Link>
+                      <Link to={`/tailor/${tailor.id}`}>
+                        <Button size="sm" className="gradient-gold text-white">
+                          Voir profil
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>

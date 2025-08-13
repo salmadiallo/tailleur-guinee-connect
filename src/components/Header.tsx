@@ -13,9 +13,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-r from-african-gold to-african-terracotta rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">T</span>
+              <span className="text-white font-bold text-sm">MT</span>
             </div>
-            <span className="text-xl font-bold text-gray-900">TailorsHub</span>
+            <span className="text-xl font-bold text-gray-900">MonTailleurGn</span>
           </Link>
 
           {/* Search Bar */}
@@ -51,18 +51,22 @@ const Header = () => {
             <Button variant="ghost" size="sm">
               <Heart className="w-5 h-5" />
             </Button>
-            <Button variant="ghost" size="sm">
-              <MessageCircle className="w-5 h-5" />
-            </Button>
+            <Link to="/chat">
+              <Button variant="ghost" size="sm">
+                <MessageCircle className="w-5 h-5" />
+              </Button>
+            </Link>
             <Button variant="ghost" size="sm">
               <Bell className="w-5 h-5" />
             </Button>
             <Button variant="ghost" size="sm">
               <Settings className="w-5 h-5" />
             </Button>
-            <Button variant="ghost" size="sm">
-              <User className="w-5 h-5" />
-            </Button>
+            <Link to="/login">
+              <Button variant="ghost" size="sm">
+                <User className="w-5 h-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

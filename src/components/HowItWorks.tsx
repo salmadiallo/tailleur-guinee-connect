@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Search, User, Package, Truck } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HowItWorks = () => {
   const steps = [
@@ -93,9 +94,11 @@ const HowItWorks = () => {
               Rejoignez des milliers de clients satisfaits qui font confiance à nos tailleurs.
             </p>
             <div className="flex justify-center">
-              <button className="gradient-gold text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
-                Commencer ma commande
-              </button>
+              <Link to="/order">
+                <button className="gradient-gold text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                  Commencer ma commande
+                </button>
+              </Link>
             </div>
           </div>
         </div>

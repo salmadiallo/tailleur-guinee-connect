@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Search, MapPin } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Link } from "react-router-dom";
+import heroTailor from "@/assets/hero-tailor.jpg";
 
 const Hero = () => {
   return (
@@ -84,7 +85,7 @@ const Hero = () => {
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src={`https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80`}
+                src={heroTailor}
                 alt="Tailleur au travail"
                 className="w-full h-[500px] object-cover"
               />

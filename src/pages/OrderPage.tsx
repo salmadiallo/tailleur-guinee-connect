@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Upload, Plus, Minus, Calendar, DollarSign, Clock, Star, MapPin } from "lucide-react";
 import Header from "@/components/Header";
+import { Link } from "react-router-dom";
 
 const OrderPage = () => {
   const [selectedTailor] = useState({
@@ -323,9 +324,11 @@ const OrderPage = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Button className="w-full gradient-gold text-white">
-                    Confirmer la commande
-                  </Button>
+                  <Link to="/order/123">
+                    <Button className="w-full gradient-gold text-white">
+                      Confirmer la commande
+                    </Button>
+                  </Link>
                   <Button variant="outline" className="w-full">
                     Sauvegarder le devis
                   </Button>

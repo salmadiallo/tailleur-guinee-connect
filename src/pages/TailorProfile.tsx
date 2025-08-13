@@ -6,6 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Star, MapPin, Clock, MessageCircle, Heart, Share2, Eye, Phone, Mail } from "lucide-react";
 import Header from "@/components/Header";
+import { Link } from "react-router-dom";
+import tailorProfileCover from "@/assets/tailor-profile-cover.jpg";
+import portfolioBoubou from "@/assets/portfolio-boubou.jpg";
+import portfolioSuit from "@/assets/portfolio-suit.jpg";
+import portfolioDress from "@/assets/portfolio-dress.jpg";
+import portfolioEnsemble from "@/assets/portfolio-ensemble.jpg";
 
 const TailorProfile = () => {
   const [liked, setLiked] = useState(false);
@@ -19,7 +25,7 @@ const TailorProfile = () => {
     experience: "15 ans",
     specialties: ["Boubou", "Costume", "Robe", "Broderie"],
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-    coverImage: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=400&fit=crop",
+    coverImage: tailorProfileCover,
     badges: ["Ponctuel", "Créatif", "Expérimenté"],
     price: "À partir de 50,000 GNF",
     delivery: "2-3 jours",
@@ -34,7 +40,7 @@ const TailorProfile = () => {
     {
       id: 1,
       title: "Boubou Royal Brodé",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop",
+      image: portfolioBoubou,
       likes: 45,
       price: "85,000 GNF",
       category: "Boubou"
@@ -42,7 +48,7 @@ const TailorProfile = () => {
     {
       id: 2,
       title: "Costume Trois Pièces",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=400&fit=crop",
+      image: portfolioSuit,
       likes: 32,
       price: "120,000 GNF",
       category: "Costume"
@@ -50,7 +56,7 @@ const TailorProfile = () => {
     {
       id: 3,
       title: "Robe de Soirée Élégante",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=400&fit=crop",
+      image: portfolioDress,
       likes: 67,
       price: "95,000 GNF",
       category: "Robe"
@@ -58,7 +64,7 @@ const TailorProfile = () => {
     {
       id: 4,
       title: "Ensemble Traditionnel",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=400&h=400&fit=crop",
+      image: portfolioEnsemble,
       likes: 28,
       price: "75,000 GNF",
       category: "Ensemble"
@@ -154,10 +160,12 @@ const TailorProfile = () => {
                       <Share2 className="w-4 h-4 mr-2" />
                       Partager
                     </Button>
-                    <Button className="gradient-gold text-white">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Contacter
-                    </Button>
+                    <Link to="/chat">
+                      <Button className="gradient-gold text-white">
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        Contacter
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -359,10 +367,12 @@ const TailorProfile = () => {
                   </div>
                 </div>
                 
-                <Button className="gradient-gold text-white w-full md:w-auto">
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Démarrer une conversation
-                </Button>
+                <Link to="/chat">
+                  <Button className="gradient-gold text-white w-full md:w-auto">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Démarrer une conversation
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </TabsContent>
