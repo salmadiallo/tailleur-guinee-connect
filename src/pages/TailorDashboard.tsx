@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Package, MessageCircle, Star, DollarSign, TrendingUp, Camera, Eye } from "lucide-react";
 import Header from "@/components/Header";
-import PublishModal from "@/components/PublishModal";
+import { Link } from "react-router-dom";
 
 const TailorDashboard = () => {
   const recentOrders = [
@@ -65,12 +65,6 @@ const TailorDashboard = () => {
                 <Camera className="w-4 h-4 mr-2" />
                 Ajouter photo
               </Button>
-              <PublishModal>
-                <Button className="gradient-gold text-white">
-                  <Plus className="w-4 h-4 mr-2" />
-                  Publier création
-                </Button>
-              </PublishModal>
             </div>
           </div>
         </div>
@@ -156,10 +150,12 @@ const TailorDashboard = () => {
                           </Badge>
                           <p className="text-sm font-medium mt-2">{order.price}</p>
                           <div className="flex space-x-2 mt-2">
-                            <Button size="sm" variant="outline">
-                              <Eye className="w-4 h-4 mr-1" />
-                              Détails
-                            </Button>
+                            <Link to={`/order-details/${order.id}`}>
+                              <Button size="sm" variant="outline">
+                                <Eye className="w-4 h-4 mr-1" />
+                                Détails
+                              </Button>
+                            </Link>
                             <Button size="sm" className="gradient-gold text-white">
                               Mettre à jour
                             </Button>
@@ -195,12 +191,10 @@ const TailorDashboard = () => {
                     <CardTitle>Mon Portfolio</CardTitle>
                     <CardDescription>Présentez vos plus belles créations</CardDescription>
                   </div>
-                  <PublishModal>
-                    <Button className="gradient-gold text-white">
-                      <Plus className="w-4 h-4 mr-2" />
-                      Ajouter création
-                    </Button>
-                  </PublishModal>
+                  <Button className="gradient-gold text-white">
+                    <Plus className="w-4 h-4 mr-2" />
+                    Ajouter création
+                  </Button>
                 </div>
               </CardHeader>
               <CardContent>

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Package, MessageCircle, Star, Clock, MapPin, Eye } from "lucide-react";
 import Header from "@/components/Header";
+import { Link } from "react-router-dom";
 
 const ClientDashboard = () => {
   const recentOrders = [
@@ -58,10 +59,12 @@ const ClientDashboard = () => {
               <h1 className="text-3xl font-bold text-gray-900">Bonjour, Aminata !</h1>
               <p className="text-gray-600 mt-2">Gérez vos commandes et découvrez de nouveaux tailleurs</p>
             </div>
-            <Button className="gradient-gold text-white">
-              <Plus className="w-4 h-4 mr-2" />
-              Nouvelle commande
-            </Button>
+            <Link to="/tailor-selection">
+              <Button className="gradient-gold text-white">
+                <Plus className="w-4 h-4 mr-2" />
+                Nouvelle commande
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -150,10 +153,12 @@ const ClientDashboard = () => {
                             {order.status}
                           </Badge>
                           <p className="text-sm font-medium mt-2">{order.price}</p>
-                          <Button size="sm" variant="outline" className="mt-2">
-                            <Eye className="w-4 h-4 mr-1" />
-                            Détails
-                          </Button>
+                          <Link to={`/order-details/${order.id}`}>
+                            <Button size="sm" variant="outline" className="mt-2">
+                              <Eye className="w-4 h-4 mr-1" />
+                              Détails
+                            </Button>
+                          </Link>
                         </div>
                       </div>
                       {order.status === "En cours" && (

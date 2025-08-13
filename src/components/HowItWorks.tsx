@@ -94,7 +94,7 @@ const HowItWorks = () => {
               Rejoignez des milliers de clients satisfaits qui font confiance à nos tailleurs.
             </p>
             <div className="flex justify-center">
-              <Link to="/order">
+              <Link to="/tailor-selection">
                 <button className="gradient-gold text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
                   Commencer ma commande
                 </button>

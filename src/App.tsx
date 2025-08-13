@@ -16,6 +16,8 @@ import OrderPage from "./pages/OrderPage";
 import TailorProfile from "./pages/TailorProfile";
 import PublicationsPage from "./pages/PublicationsPage";
 import OrderDetails from "./pages/OrderDetails";
+import TailorSelection from "./pages/TailorSelection";
+import OrderDetailsPage from "./pages/OrderDetailsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +41,8 @@ const App: React.FC = () => {
             <Route path="/chat" element={<ChatPage />} />
             <Route path="/order" element={<OrderPage />} />
             <Route path="/order/:id" element={<OrderDetails />} />
+            <Route path="/tailor-selection" element={<TailorSelection />} />
+            <Route path="/order-details/:id" element={<OrderDetailsPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

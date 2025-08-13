@@ -230,8 +230,7 @@ const TailorProfile = () => {
                           <h3 className="font-semibold">{item.title}</h3>
                           <Badge variant="secondary">{item.category}</Badge>
                         </div>
-                        <div className="flex items-center justify-between mt-2">
-                          <span className="text-lg font-bold text-primary">{item.price}</span>
+                        <div className="flex items-center justify-end mt-2">
                           <div className="flex items-center space-x-1 text-sm text-gray-600">
                             <Heart className="w-4 h-4 text-red-500" />
                             <span>{item.likes}</span>
@@ -276,9 +275,9 @@ const TailorProfile = () => {
                 </div>
                 
                 <div className="bg-gradient-to-r from-african-gold-light to-african-terracotta-light rounded-lg p-6">
-                  <h3 className="font-semibold mb-2">Tarification</h3>
-                  <p className="text-2xl font-bold text-primary mb-2">{tailorData.price}</p>
+                  <h3 className="font-semibold mb-2">Informations de service</h3>
                   <p className="text-sm text-gray-600">Délai de livraison: {tailorData.delivery}</p>
+                  <p className="text-sm text-gray-600 mt-1">Consultations sur mesure disponibles</p>
                 </div>
               </CardContent>
             </Card>
