@@ -92,12 +92,9 @@ const HowItWorks = () => {
             <p className="text-gray-600 mb-6">
               Rejoignez des milliers de clients satisfaits qui font confiance à nos tailleurs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <button className="gradient-gold text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
                 Commencer ma commande
-              </button>
-              <button className="border border-primary text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary hover:text-white transition-colors">
-                Explorer les tailleurs
               </button>
             </div>
           </div>
