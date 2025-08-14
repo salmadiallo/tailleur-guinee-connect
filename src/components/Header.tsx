@@ -5,7 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Search, Heart, MessageCircle, Bell, User, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ userType = "guest" }: { userType?: "client" | "tailor" | "guest" }) => {
+  const isClient = userType === "client";
+  const isTailor = userType === "tailor";
+  
   return (
     <header className="bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,12 +41,16 @@ const Header = () => {
             <Link to="/search-tailors" className="text-gray-700 hover:text-primary font-medium">
               Tailleurs
             </Link>
-            <Link to="/client-dashboard" className="text-gray-700 hover:text-primary font-medium">
-              Client
-            </Link>
-            <Link to="/tailor-dashboard" className="text-gray-700 hover:text-primary font-medium">
-              Tailleur
-            </Link>
+            {(isClient || userType === "guest") && (
+              <Link to="/client-dashboard" className="text-gray-700 hover:text-primary font-medium">
+                Espace Client
+              </Link>
+            )}
+            {(isTailor || userType === "guest") && (
+              <Link to="/tailor-dashboard" className="text-gray-700 hover:text-primary font-medium">
+                Espace Tailleur
+              </Link>
+            )}
           </nav>
 
           {/* User Actions */}

@@ -33,24 +33,24 @@ const TailorDashboard = () => {
   const portfolioItems = [
     {
       title: "Boubou brodé",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=300&h=300&fit=crop",
+      image: "/src/assets/portfolio-boubou.jpg",
       likes: 24
     },
     {
       title: "Robe de soirée",
-      image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop",
+      image: "/src/assets/portfolio-dress.jpg",
       likes: 18
     },
     {
       title: "Costume moderne",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop",
+      image: "/src/assets/portfolio-suit.jpg",
       likes: 31
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header userType="tailor" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}

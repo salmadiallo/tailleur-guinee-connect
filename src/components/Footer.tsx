@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -36,11 +37,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Liens rapides</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Accueil</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Tailleurs</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Comment ça marche</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">À propos</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Blog</a></li>
+              <li><Link to="/" className="text-gray-300 hover:text-white transition-colors">Accueil</Link></li>
+              <li><Link to="/search-tailors" className="text-gray-300 hover:text-white transition-colors">Tailleurs</Link></li>
+              <li><Link to="/publications" className="text-gray-300 hover:text-white transition-colors">Galerie</Link></li>
+              <li><Link to="/#how-it-works" className="text-gray-300 hover:text-white transition-colors">Comment ça marche</Link></li>
+              <li><Link to="/#about" className="text-gray-300 hover:text-white transition-colors">À propos</Link></li>
             </ul>
           </div>
 
@@ -48,11 +49,11 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Pour les tailleurs</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Devenir partenaire</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Centre d'aide</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Tarifs</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Ressources</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-white transition-colors">Formation</a></li>
+              <li><Link to="/tailor-dashboard" className="text-gray-300 hover:text-white transition-colors">Espace Tailleur</Link></li>
+              <li><Link to="/signup" className="text-gray-300 hover:text-white transition-colors">Devenir partenaire</Link></li>
+              <li><Link to="/chat" className="text-gray-300 hover:text-white transition-colors">Centre d'aide</Link></li>
+              <li><Link to="/#pricing" className="text-gray-300 hover:text-white transition-colors">Tarifs</Link></li>
+              <li><Link to="/#resources" className="text-gray-300 hover:text-white transition-colors">Ressources</Link></li>
             </ul>
           </div>
 

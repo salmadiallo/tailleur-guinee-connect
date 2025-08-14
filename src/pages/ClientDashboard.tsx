@@ -49,7 +49,7 @@ const ClientDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
+      <Header userType="client" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome Section */}
@@ -216,9 +216,11 @@ const ClientDashboard = () => {
                             ))}
                           </div>
                         </div>
-                        <Button size="sm" variant="outline">
-                          Contacter
-                        </Button>
+                        <Link to="/chat">
+                          <Button size="sm" variant="outline">
+                            Contacter
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   ))}
@@ -237,9 +239,11 @@ const ClientDashboard = () => {
                 <div className="text-center py-8">
                   <MessageCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
                   <p className="text-gray-600">Aucun message pour le moment</p>
-                  <Button variant="outline" className="mt-4">
-                    Démarrer une conversation
-                  </Button>
+                  <Link to="/chat">
+                    <Button variant="outline" className="mt-4">
+                      Démarrer une conversation
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
