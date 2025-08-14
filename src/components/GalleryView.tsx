@@ -26,9 +26,10 @@ interface Publication {
 
 interface GalleryViewProps {
   publications: Publication[];
+  onModelClick?: (publication: Publication) => void;
 }
 
-const GalleryView = ({ publications }: GalleryViewProps) => {
+const GalleryView = ({ publications, onModelClick }: GalleryViewProps) => {
   const [likedPublications, setLikedPublications] = useState<Set<number>>(new Set());
   const [savedPublications, setSavedPublications] = useState<Set<number>>(new Set());
 
@@ -150,7 +151,11 @@ const GalleryView = ({ publications }: GalleryViewProps) => {
             {/* Price and Action */}
             <div className="flex items-center justify-between mb-4">
               <span className="text-xl font-bold text-primary">{publication.price}</span>
-              <Button size="sm" className="gradient-gold text-white">
+              <Button 
+                size="sm" 
+                className="gradient-gold text-white"
+                onClick={() => onModelClick?.(publication)}
+              >
                 <Eye className="w-4 h-4 mr-1" />
                 Voir
               </Button>

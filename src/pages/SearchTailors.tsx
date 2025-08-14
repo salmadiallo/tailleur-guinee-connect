@@ -257,8 +257,13 @@ const SearchTailors = () => {
                         </Button>
                       </Link>
                       <Link to={`/tailor/${tailor.id}`}>
-                        <Button size="sm" className="gradient-gold text-white">
+                        <Button size="sm" variant="outline">
                           Voir profil
+                        </Button>
+                      </Link>
+                      <Link to={`/order?tailor=${tailor.id}`}>
+                        <Button size="sm" className="gradient-gold text-white">
+                          Choisir
                         </Button>
                       </Link>
                     </div>

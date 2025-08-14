@@ -9,12 +9,30 @@ import { Search, Filter, Plus, Grid, List } from "lucide-react";
 import Header from "@/components/Header";
 import PublishModal from "@/components/PublishModal";
 import GalleryView from "@/components/GalleryView";
+import ModelDetailModal from "@/components/ModelDetailModal";
 
 const PublicationsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [sortBy, setSortBy] = useState('recent');
   const [viewMode, setViewMode] = useState<'gallery' | 'list'>('gallery');
+  const [selectedModel, setSelectedModel] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModelClick = (publication: any) => {
+    setSelectedModel({
+      id: publication.id,
+      title: publication.title,
+      image: publication.images[0],
+      likes: publication.likes,
+      price: publication.price,
+      category: publication.category,
+      description: publication.description,
+      materials: ["Bazin riche", "Fils dorés", "Doublure coton"],
+      features: ["Coupe traditionnelle", "Broderie main", "Finitions soignées", "Ajustement personnalisé"]
+    });
+    setIsModalOpen(true);
+  };
 
   const publications = [
     {
@@ -218,7 +236,7 @@ const PublicationsPage = () => {
         {/* Publications */}
         <Tabs value={viewMode} className="space-y-6">
           <TabsContent value="gallery" className="mt-0">
-            <GalleryView publications={sortedPublications} />
+            <GalleryView publications={sortedPublications} onModelClick={handleModelClick} />
           </TabsContent>
           
           <TabsContent value="list" className="mt-0">
@@ -252,7 +270,11 @@ const PublicationsPage = () => {
                               ))}
                             </div>
                           </div>
-                          <Button size="sm" className="gradient-gold text-white ml-4">
+                          <Button 
+                            size="sm" 
+                            className="gradient-gold text-white ml-4"
+                            onClick={() => handleModelClick(publication)}
+                          >
                             Voir détails
                           </Button>
                         </div>
@@ -271,6 +293,12 @@ const PublicationsPage = () => {
             Charger plus de créations
           </Button>
         </div>
+        
+        <ModelDetailModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          model={selectedModel}
+        />
       </div>
     </div>
   );

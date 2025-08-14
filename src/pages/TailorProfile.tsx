@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Star, MapPin, Clock, MessageCircle, Heart, Share2, Eye, Phone, Mail } from "lucide-react";
 import Header from "@/components/Header";
 import { Link } from "react-router-dom";
+import ModelDetailModal from "@/components/ModelDetailModal";
 import tailorProfileCover from "@/assets/tailor-profile-cover.jpg";
 import portfolioBoubou from "@/assets/portfolio-boubou.jpg";
 import portfolioSuit from "@/assets/portfolio-suit.jpg";
@@ -15,6 +16,18 @@ import portfolioEnsemble from "@/assets/portfolio-ensemble.jpg";
 
 const TailorProfile = () => {
   const [liked, setLiked] = useState(false);
+  const [selectedModel, setSelectedModel] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModelClick = (model: any) => {
+    setSelectedModel({
+      ...model,
+      description: `Cette magnifique création ${model.title.toLowerCase()} représente l'excellence de notre savoir-faire traditionnel guinéen.`,
+      materials: ["Bazin riche", "Fils dorés", "Doublure coton"],
+      features: ["Coupe traditionnelle", "Broderie main", "Finitions soignées", "Ajustement personnalisé"]
+    });
+    setIsModalOpen(true);
+  };
 
   const tailorData = {
     id: 1,
@@ -219,7 +232,11 @@ const TailorProfile = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <Button variant="secondary" size="sm">
+                          <Button 
+                            variant="secondary" 
+                            size="sm"
+                            onClick={() => handleModelClick(item)}
+                          >
                             <Eye className="w-4 h-4 mr-2" />
                             Voir détails
                           </Button>
@@ -376,6 +393,12 @@ const TailorProfile = () => {
             </Card>
           </TabsContent>
         </Tabs>
+        
+        <ModelDetailModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          model={selectedModel}
+        />
       </div>
     </div>
   );

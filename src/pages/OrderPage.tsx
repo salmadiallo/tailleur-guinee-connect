@@ -324,7 +324,7 @@ const OrderPage = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <Link to="/order/123">
+                  <Link to="/order-details/CMD001">
                     <Button className="w-full gradient-gold text-white">
                       Confirmer la commande
                     </Button>
