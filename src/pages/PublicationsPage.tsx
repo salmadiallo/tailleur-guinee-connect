@@ -40,9 +40,9 @@ const PublicationsPage = () => {
       title: "Boubou Royal Brodé",
       description: "Magnifique boubou traditionnel avec broderies dorées et motifs guinéens authentiques. Confectionné avec des tissus de haute qualité.",
       images: [
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=500&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1503944168634-28d7136d9e9e?w=500&h=400&fit=crop"
+        "/src/assets/portfolio-boubou.jpg",
+        "/src/assets/tailor-workshop-1.jpg",
+        "/src/assets/tailor-workshop-2.jpg"
       ],
       tailor: {
         name: "Mamadou Diallo",
@@ -62,8 +62,8 @@ const PublicationsPage = () => {
       title: "Costume Moderne Élégant",
       description: "Costume trois pièces moderne parfait pour les événements professionnels et les cérémonies importantes.",
       images: [
-        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop"
+        "/src/assets/portfolio-suit.jpg",
+        "/src/assets/tailor-workshop-3.jpg"
       ],
       tailor: {
         name: "Ibrahima Sow",
@@ -83,10 +83,10 @@ const PublicationsPage = () => {
       title: "Robe de Soirée Exceptionnelle",
       description: "Création unique pour vos soirées les plus importantes. Chaque détail est travaillé avec soin et précision.",
       images: [
-        "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=500&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=500&h=400&fit=crop"
+        "/src/assets/portfolio-dress.jpg",
+        "/src/assets/portfolio-ensemble.jpg",
+        "/src/assets/tailor-workshop-1.jpg",
+        "/src/assets/tailor-workshop-2.jpg"
       ],
       tailor: {
         name: "Aissatou Baldé",
@@ -106,7 +106,7 @@ const PublicationsPage = () => {
       title: "Collection Enfants Colorée",
       description: "Vêtements pour enfants avec des motifs africains authentiques et des couleurs vives qui plaisent aux petits.",
       images: [
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&h=400&fit=crop"
+        "/src/assets/portfolio-ensemble.jpg"
       ],
       tailor: {
         name: "Mariama Diawara",
