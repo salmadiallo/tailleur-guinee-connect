@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Package, MessageCircle, Star, DollarSign, TrendingUp, Camera, Eye } from "lucide-react";
 import Header from "@/components/Header";
 import { Link } from "react-router-dom";
+import PublishModal from "@/components/PublishModal";
 
 const TailorDashboard = () => {
   const recentOrders = [
@@ -185,10 +186,12 @@ const TailorDashboard = () => {
                     <CardTitle>Mon Portfolio</CardTitle>
                     <CardDescription>Présentez vos plus belles créations</CardDescription>
                   </div>
-                  <Button className="gradient-gold text-white">
-                    <Plus className="w-4 h-4 mr-2" />
-                    Ajouter création
-                  </Button>
+                  <PublishModal>
+                    <Button className="gradient-gold text-white">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Ajouter création
+                    </Button>
+                  </PublishModal>
                 </div>
               </CardHeader>
               <CardContent>
