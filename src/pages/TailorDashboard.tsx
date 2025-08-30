@@ -60,12 +60,6 @@ const TailorDashboard = () => {
               <h1 className="text-3xl font-bold text-gray-900">Bienvenue, Mamadou !</h1>
               <p className="text-gray-600 mt-2">Gérez votre atelier et vos créations</p>
             </div>
-            <div className="flex space-x-3">
-              <Button variant="outline">
-                <Camera className="w-4 h-4 mr-2" />
-                Ajouter photo
-              </Button>
-            </div>
           </div>
         </div>
 
