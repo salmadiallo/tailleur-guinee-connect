@@ -8,6 +8,9 @@ import { Plus, Package, MessageCircle, Star, DollarSign, TrendingUp, Camera, Eye
 import Header from "@/components/Header";
 import { Link } from "react-router-dom";
 import PublishModal from "@/components/PublishModal";
+import portfolioBoubou from "@/assets/portfolio-boubou.jpg";
+import portfolioSuit from "@/assets/portfolio-suit.jpg";
+import portfolioDress from "@/assets/portfolio-dress.jpg";
 
 const TailorDashboard = () => {
   const recentOrders = [
@@ -34,17 +37,17 @@ const TailorDashboard = () => {
   const portfolioItems = [
     {
       title: "Boubou brodé",
-      image: "/src/assets/portfolio-boubou.jpg",
+      image: portfolioBoubou,
       likes: 24
     },
     {
       title: "Robe de soirée",
-      image: "/src/assets/portfolio-dress.jpg",
+      image: portfolioDress,
       likes: 18
     },
     {
       title: "Costume moderne",
-      image: "/src/assets/portfolio-suit.jpg",
+      image: portfolioSuit,
       likes: 31
     }
   ];

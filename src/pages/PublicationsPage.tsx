@@ -10,6 +10,13 @@ import Header from "@/components/Header";
 import PublishModal from "@/components/PublishModal";
 import GalleryView from "@/components/GalleryView";
 import ModelDetailModal from "@/components/ModelDetailModal";
+import portfolioBoubou from "@/assets/portfolio-boubou.jpg";
+import portfolioSuit from "@/assets/portfolio-suit.jpg";
+import portfolioDress from "@/assets/portfolio-dress.jpg";
+import portfolioEnsemble from "@/assets/portfolio-ensemble.jpg";
+import tailorWorkshop1 from "@/assets/tailor-workshop-1.jpg";
+import tailorWorkshop2 from "@/assets/tailor-workshop-2.jpg";
+import tailorWorkshop3 from "@/assets/tailor-workshop-3.jpg";
 
 const PublicationsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -40,9 +47,9 @@ const PublicationsPage = () => {
       title: "Boubou Royal Brodé",
       description: "Magnifique boubou traditionnel avec broderies dorées et motifs guinéens authentiques. Confectionné avec des tissus de haute qualité.",
       images: [
-        "/src/assets/portfolio-boubou.jpg",
-        "/src/assets/tailor-workshop-1.jpg",
-        "/src/assets/tailor-workshop-2.jpg"
+        portfolioBoubou,
+        tailorWorkshop1,
+        tailorWorkshop2
       ],
       tailor: {
         name: "Mamadou Diallo",
@@ -62,8 +69,8 @@ const PublicationsPage = () => {
       title: "Costume Moderne Élégant",
       description: "Costume trois pièces moderne parfait pour les événements professionnels et les cérémonies importantes.",
       images: [
-        "/src/assets/portfolio-suit.jpg",
-        "/src/assets/tailor-workshop-3.jpg"
+        portfolioSuit,
+        tailorWorkshop3
       ],
       tailor: {
         name: "Ibrahima Sow",
@@ -83,10 +90,10 @@ const PublicationsPage = () => {
       title: "Robe de Soirée Exceptionnelle",
       description: "Création unique pour vos soirées les plus importantes. Chaque détail est travaillé avec soin et précision.",
       images: [
-        "/src/assets/portfolio-dress.jpg",
-        "/src/assets/portfolio-ensemble.jpg",
-        "/src/assets/tailor-workshop-1.jpg",
-        "/src/assets/tailor-workshop-2.jpg"
+        portfolioDress,
+        portfolioEnsemble,
+        tailorWorkshop1,
+        tailorWorkshop2
       ],
       tailor: {
         name: "Aissatou Baldé",
@@ -106,7 +113,7 @@ const PublicationsPage = () => {
       title: "Collection Enfants Colorée",
       description: "Vêtements pour enfants avec des motifs africains authentiques et des couleurs vives qui plaisent aux petits.",
       images: [
-        "/src/assets/portfolio-ensemble.jpg"
+        portfolioEnsemble
       ],
       tailor: {
         name: "Mariama Diawara",

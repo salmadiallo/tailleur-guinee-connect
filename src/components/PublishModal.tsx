@@ -36,17 +36,19 @@ const PublishModal = ({ children }: PublishModalProps) => {
     setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
-  const handleAddImage = () => {
-    // Simulation d'ajout d'image - en réalité, ici on intégrerait un système d'upload
-    const sampleImages = [
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=500&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=500&h=400&fit=crop"
-    ];
-    
-    if (images.length < 4) {
-      const randomImage = sampleImages[Math.floor(Math.random() * sampleImages.length)];
-      setImages([...images, randomImage]);
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      if (file.type.startsWith('image/') && images.length < 4) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (e.target?.result) {
+            setImages([...images, e.target.result as string]);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
     }
   };
 
@@ -64,7 +66,37 @@ const PublishModal = ({ children }: PublishModalProps) => {
       return;
     }
 
-    // Simulation de publication
+    if (images.length === 0) {
+      toast({
+        title: "Erreur",
+        description: "Veuillez ajouter au moins une photo",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Simulation de publication avec les vraies données
+    const newPublication = {
+      id: Date.now(),
+      title,
+      description,
+      category,
+      price: `${price} GNF`,
+      tags,
+      images,
+      tailor: {
+        name: "Votre Nom",
+        avatar: "/placeholder-avatar.jpg",
+        verified: true
+      },
+      likes: 0,
+      comments: 0,
+      shares: 0,
+      date: new Date().toLocaleDateString('fr-FR')
+    };
+
+    console.log('Publication créée:', newPublication);
+
     toast({
       title: "Publication réussie !",
       description: "Votre création a été publiée avec succès",
@@ -110,15 +142,18 @@ const PublishModal = ({ children }: PublishModalProps) => {
                 </div>
               ))}
               {images.length < 4 && (
-                <button
-                  onClick={handleAddImage}
-                  className="aspect-square border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:border-primary transition-colors"
-                >
+                <label className="aspect-square border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center hover:border-primary transition-colors cursor-pointer">
                   <div className="text-center">
                     <Camera className="w-8 h-8 text-gray-400 mx-auto mb-2" />
                     <p className="text-sm text-gray-500">Ajouter une photo</p>
                   </div>
-                </button>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
+                </label>
               )}
             </div>
           </div>
