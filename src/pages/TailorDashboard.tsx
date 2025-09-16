@@ -5,9 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Plus, Package, MessageCircle, Star, DollarSign, TrendingUp, Camera, Eye } from "lucide-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import Header from "@/components/Header";
 import { Link } from "react-router-dom";
 import PublishModal from "@/components/PublishModal";
+import TailorMessages from "@/components/TailorMessages";
 import portfolioBoubou from "@/assets/portfolio-boubou.jpg";
 import portfolioSuit from "@/assets/portfolio-suit.jpg";
 import portfolioDress from "@/assets/portfolio-dress.jpg";
@@ -50,6 +52,25 @@ const TailorDashboard = () => {
       image: portfolioSuit,
       likes: 31
     }
+  ];
+
+  // Données pour les graphiques
+  const revenueData = [
+    { month: 'Jan', revenue: 320000 },
+    { month: 'Fév', revenue: 380000 },
+    { month: 'Mar', revenue: 420000 },
+    { month: 'Avr', revenue: 450000 },
+    { month: 'Mai', revenue: 480000 },
+    { month: 'Jun', revenue: 520000 }
+  ];
+
+  const orderData = [
+    { month: 'Jan', orders: 12 },
+    { month: 'Fév', orders: 15 },
+    { month: 'Mar', orders: 18 },
+    { month: 'Avr', orders: 22 },
+    { month: 'Mai', orders: 25 },
+    { month: 'Jun', orders: 28 }
   ];
 
   return (
@@ -235,10 +256,7 @@ const TailorDashboard = () => {
                 <CardDescription>Communiquez avec vos clients</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-center py-8">
-                  <MessageCircle className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600">Aucun message récent</p>
-                </div>
+                <TailorMessages />
               </CardContent>
             </Card>
           </TabsContent>
@@ -248,20 +266,48 @@ const TailorDashboard = () => {
               <Card>
                 <CardHeader>
                   <CardTitle>Revenus mensuels</CardTitle>
+                  <CardDescription>Évolution de vos revenus sur 6 mois</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <p className="text-gray-500">Graphique des revenus</p>
+                  <div className="h-64">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={revenueData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip formatter={(value) => [`${value.toLocaleString()} GNF`, 'Revenus']} />
+                        <Line 
+                          type="monotone" 
+                          dataKey="revenue" 
+                          stroke="#D4AF37" 
+                          strokeWidth={3}
+                          dot={{ fill: '#D4AF37', strokeWidth: 2, r: 6 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
                   </div>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader>
                   <CardTitle>Commandes par mois</CardTitle>
+                  <CardDescription>Nombre de commandes reçues</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                    <p className="text-gray-500">Graphique des commandes</p>
+                  <div className="h-64">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={orderData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="month" />
+                        <YAxis />
+                        <Tooltip formatter={(value) => [`${value}`, 'Commandes']} />
+                        <Bar 
+                          dataKey="orders" 
+                          fill="#D4AF37"
+                          radius={[4, 4, 0, 0]}
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </div>
                 </CardContent>
               </Card>
