@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -10,11 +10,35 @@ import Header from "@/components/Header";
 import { Link } from "react-router-dom";
 import PublishModal from "@/components/PublishModal";
 import TailorMessages from "@/components/TailorMessages";
+import ModelDetailModal from "@/components/ModelDetailModal";
 import portfolioBoubou from "@/assets/portfolio-boubou.jpg";
 import portfolioSuit from "@/assets/portfolio-suit.jpg";
 import portfolioDress from "@/assets/portfolio-dress.jpg";
 
 const TailorDashboard = () => {
+  const [selectedModel, setSelectedModel] = useState(null);
+  const [isModelModalOpen, setIsModelModalOpen] = useState(false);
+
+  const openModelDetails = (item) => {
+    const modelData = {
+      id: item.title,
+      title: item.title,
+      image: item.image,
+      likes: item.likes,
+      price: "75,000 - 150,000 GNF",
+      category: "Création sur mesure",
+      description: "Une création unique réalisée avec soin et expertise. Cette pièce allie tradition et modernité pour un style authentique et élégant.",
+      materials: ["Bazin riche", "Fils dorés", "Doublure coton"],
+      features: [
+        "Coupe traditionnelle",
+        "Broderie main",
+        "Finitions soignées",
+        "Ajustement personnalisé"
+      ]
+    };
+    setSelectedModel(modelData);
+    setIsModelModalOpen(true);
+  };
   const recentOrders = [
     {
       id: "CMD001",
@@ -229,7 +253,11 @@ const TailorDashboard = () => {
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <Button variant="secondary" size="sm">
+                          <Button 
+                            variant="secondary" 
+                            size="sm"
+                            onClick={() => openModelDetails(item)}
+                          >
                             <Eye className="w-4 h-4 mr-2" />
                             Voir détails
                           </Button>
@@ -373,6 +401,13 @@ const TailorDashboard = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Modal de détails du modèle */}
+      <ModelDetailModal
+        isOpen={isModelModalOpen}
+        onClose={() => setIsModelModalOpen(false)}
+        model={selectedModel}
+      />
     </div>
   );
 };
