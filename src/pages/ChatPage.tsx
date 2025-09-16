@@ -1,15 +1,15 @@
-
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Phone, Video, MoreVertical, Paperclip, Image, Smile } from "lucide-react";
+import { Send, Phone, Video, MoreVertical, Paperclip, Image, Smile, Search } from "lucide-react";
 import Header from "@/components/Header";
 
 const ChatPage = () => {
   const [selectedChat, setSelectedChat] = useState(0);
   const [newMessage, setNewMessage] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const conversations = [
     {
@@ -43,6 +43,17 @@ const ChatPage = () => {
       type: "client"
     }
   ];
+
+  // Filtrer les conversations basé sur la recherche
+  const filteredConversations = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return conversations;
+    }
+    return conversations.filter(conv => 
+      conv.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      conv.lastMessage.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
 
   const messages = [
     {
@@ -113,50 +124,66 @@ const ChatPage = () => {
           <Card className="lg:col-span-1">
             <CardHeader className="pb-3">
               <h2 className="text-lg font-semibold">Messages</h2>
+              {/* Barre de recherche */}
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Input
+                  placeholder="Rechercher une conversation..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10"
+                />
+              </div>
             </CardHeader>
             <CardContent className="p-0">
               <div className="space-y-1">
-                {conversations.map((conv, index) => (
-                  <div
-                    key={conv.id}
-                    onClick={() => setSelectedChat(index)}
-                    className={`p-3 cursor-pointer hover:bg-gray-50 border-l-4 ${
-                      selectedChat === index 
-                        ? 'border-primary bg-primary/5' 
-                        : 'border-transparent'
-                    }`}
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="relative">
-                        <img
-                          src={conv.avatar}
-                          alt={conv.name}
-                          className="w-12 h-12 rounded-full object-cover"
-                        />
-                        {conv.online && (
-                          <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-medium text-sm truncate">{conv.name}</h3>
-                          <span className="text-xs text-gray-500">{conv.timestamp}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm text-gray-600 truncate">{conv.lastMessage}</p>
-                          {conv.unread > 0 && (
-                            <Badge className="bg-primary text-white rounded-full w-5 h-5 text-xs flex items-center justify-center p-0">
-                              {conv.unread}
-                            </Badge>
+                {filteredConversations.length === 0 ? (
+                  <div className="p-4 text-center text-gray-500">
+                    Aucune conversation trouvée
+                  </div>
+                ) : (
+                  filteredConversations.map((conv, index) => (
+                    <div
+                      key={conv.id}
+                      onClick={() => setSelectedChat(conversations.findIndex(c => c.id === conv.id))}
+                      className={`p-3 cursor-pointer hover:bg-gray-50 border-l-4 ${
+                        selectedChat === conversations.findIndex(c => c.id === conv.id)
+                          ? 'border-primary bg-primary/5' 
+                          : 'border-transparent'
+                      }`}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="relative">
+                          <img
+                            src={conv.avatar}
+                            alt={conv.name}
+                            className="w-12 h-12 rounded-full object-cover"
+                          />
+                          {conv.online && (
+                            <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
                           )}
                         </div>
-                        <Badge variant="secondary" className="text-xs mt-1">
-                          {conv.type === 'tailleur' ? 'Tailleur' : 'Client'}
-                        </Badge>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center justify-between">
+                            <h3 className="font-medium text-sm truncate">{conv.name}</h3>
+                            <span className="text-xs text-gray-500">{conv.timestamp}</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <p className="text-sm text-gray-600 truncate">{conv.lastMessage}</p>
+                            {conv.unread > 0 && (
+                              <Badge className="bg-primary text-white rounded-full w-5 h-5 text-xs flex items-center justify-center p-0">
+                                {conv.unread}
+                              </Badge>
+                            )}
+                          </div>
+                          <Badge variant="secondary" className="text-xs mt-1">
+                            {conv.type === 'tailleur' ? 'Tailleur' : 'Client'}
+                          </Badge>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))
+                )}
               </div>
             </CardContent>
           </Card>
