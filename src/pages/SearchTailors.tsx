@@ -246,9 +246,8 @@ const SearchTailors = () => {
                     ))}
                   </div>
 
-                  {/* Price and Actions */}
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-primary">{tailor.price}</span>
+                  {/* Actions */}
+                  <div className="flex justify-end">
                     <div className="flex space-x-2">
                       <Link to="/chat">
                         <Button size="sm" variant="outline">
