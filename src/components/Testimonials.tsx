@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Testimonials = () => {
   const testimonials = [
@@ -102,9 +103,11 @@ const Testimonials = () => {
               Commandez dès maintenant et découvrez pourquoi nos clients nous font confiance 
               pour leurs vêtements sur mesure.
             </p>
-            <button className="gradient-gold text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
-              Commencer ma première commande
-            </button>
+            <Link to="/search-tailors">
+              <button className="gradient-gold text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                Commencer ma première commande
+              </button>
+            </Link>
           </div>
         </div>
       </div>
