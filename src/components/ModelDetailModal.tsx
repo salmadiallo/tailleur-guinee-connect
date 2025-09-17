@@ -87,8 +87,7 @@ const ModelDetailModal: React.FC<ModelDetailModalProps> = ({ isOpen, onClose, mo
             </div>
 
             <div className="border-t pt-4">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-2xl font-bold text-primary">{model.price}</span>
+              <div className="flex justify-end mb-4">
                 <div className="flex items-center space-x-1 text-sm text-gray-600">
                   <Heart className="w-4 h-4 text-red-500" />
                   <span>{model.likes} j'aime</span>

@@ -148,9 +148,8 @@ const GalleryView = ({ publications, onModelClick }: GalleryViewProps) => {
               )}
             </div>
 
-            {/* Price and Action */}
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-xl font-bold text-primary">{publication.price}</span>
+            {/* Action */}
+            <div className="flex justify-end mb-4">
               <Button 
                 size="sm" 
                 className="gradient-gold text-white"

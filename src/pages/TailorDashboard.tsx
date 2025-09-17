@@ -25,7 +25,6 @@ const TailorDashboard = () => {
       title: item.title,
       image: item.image,
       likes: item.likes,
-      price: "75,000 - 150,000 GNF",
       category: "Création sur mesure",
       description: "Une création unique réalisée avec soin et expertise. Cette pièce allie tradition et modernité pour un style authentique et élégant.",
       materials: ["Bazin riche", "Fils dorés", "Doublure coton"],
